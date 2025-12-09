@@ -23,8 +23,8 @@ for ($i = 0; $i -lt $Fresh.Count - 1; $i++) {
         if ($Fresh[$i].Item2 -ge $Fresh[$i + $j].Item1) {
             $Fresh[$i + $j] = ConvertTo-Tuple -Start ($Fresh[$i].Item2 + 1) -End $Fresh[$i + $j].Item2
         }
-
-        if ($Fresh[$i + $j].Item3 -ne 0) { break }
+        ## Then skip to that element
+        if ($Fresh[$i + $j].Item3 -ne 0) { $i += ($j - 1); break }
     }
 }
 
